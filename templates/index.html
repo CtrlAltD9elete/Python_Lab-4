@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GeoIP Neon Grid</title>
+    <link rel="stylesheet" href="/static/styles.css?v=signal-state-22">
+</head>
+<body>
+    <div class="scene" aria-hidden="true">
+        <div class="grid-plane"></div>
+        <div class="scanline"></div>
+        <div class="light-rail rail-left"></div>
+        <div class="light-rail rail-right"></div>
+    </div>
+
+    <main class="shell">
+        <header class="topbar">
+            <a class="brand" href="/" aria-label="GeoIP Neon Grid">
+                <span class="brand-mark">G</span>
+                <span>GEO//IP</span>
+            </a>
+            <nav class="navline" aria-label="Стан сервісу">
+                <span>FastAPI</span>
+                <span>MongoDB</span>
+                <span>JWT</span>
+            </nav>
+            <div class="session">
+                <span id="sessionUser">Гість</span>
+                <button id="logoutButton" class="ghost hidden" type="button">Вийти</button>
+            </div>
+        </header>
+
+        <section id="databaseNotice" class="notice hidden">
+            <strong>MongoDB офлайн.</strong>
+            <span id="databaseNoticeText">Перевірте підключення до бази даних.</span>
+        </section>
+
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">REST API // IP INTEL</p>
+                <h1 class="glitch-title" data-text="CYBER GEO">CYBER GEO</h1>
+                <p class="subtitle">NODE ONLINE // GEO SIGNAL</p>
+            </div>
+            <div class="hero-meter" aria-hidden="true">
+                <span>SIGNAL</span>
+                <strong id="signalValue" class="signal-value" data-signal-value="96">
+                    <span class="signal-digit">9</span><span class="signal-digit">6</span><span class="signal-percent">%</span>
+                </strong>
+                <span id="signalState" class="meter-state">LOCKED</span>
+            </div>
+        </section>
+
+        <section class="workspace">
+            <aside class="panel auth-panel">
+                <div class="panel-heading compact">
+                    <div>
+                        <p class="eyebrow">ACCESS</p>
+                        <h2>Користувач</h2>
+                    </div>
+                    <span class="status-dot"></span>
+                </div>
+
+                <div class="tabs" role="tablist" aria-label="Авторизація">
+                    <button class="tab active" data-tab="login" type="button">Вхід</button>
+                    <button class="tab" data-tab="register" type="button">Реєстрація</button>
+                </div>
+
+                <form id="loginForm" class="auth-form" autocomplete="on">
+                    <label>
+                        <span>Логін або email</span>
+                        <input name="login" type="text" minlength="3" required>
+                    </label>
+                    <label>
+                        <span>Пароль</span>
+                        <input name="password" type="password" minlength="8" required>
+                    </label>
+                    <button class="primary" type="submit">Увійти</button>
+                </form>
+
+                <form id="registerForm" class="auth-form hidden" autocomplete="on">
+                    <label>
+                        <span>Ім'я користувача</span>
+                        <input name="username" type="text" minlength="3" maxlength="32" pattern="[A-Za-z0-9_.-]+" required>
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input name="email" type="email" required>
+                    </label>
+                    <label>
+                        <span>Пароль</span>
+                        <input name="password" type="password" minlength="8" maxlength="128" required>
+                    </label>
+                    <button class="primary" type="submit">Створити акаунт</button>
+                </form>
+
+                <p id="authMessage" class="message" aria-live="polite"></p>
+            </aside>
+
+            <section class="main-grid">
+                <div class="panel lookup-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">SCAN NODE</p>
+                            <h2>IP-адреса</h2>
+                        </div>
+                        <span class="status-pill" id="apiStatus">Очікування</span>
+                    </div>
+
+                    <form id="lookupForm" class="lookup-form">
+                        <input name="ip_address" type="text" inputmode="text" placeholder="8.8.8.8" required>
+                        <button class="primary" type="submit">Сканувати</button>
+                    </form>
+
+                    <div id="result" class="result empty">
+                        <span>Результат сканування з'явиться тут.</span>
+                    </div>
+                </div>
+
+                <div class="panel history-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">DATA TRACE</p>
+                            <h2>Історія</h2>
+                        </div>
+                        <button id="refreshHistory" class="ghost" type="button">Оновити</button>
+                    </div>
+                    <div id="historyList" class="history-list empty">
+                        <span>Історія доступна після входу.</span>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="/static/app.js?v=signal-state-22" defer></script>
+</body>
+</html>
